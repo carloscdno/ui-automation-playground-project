@@ -8,7 +8,7 @@ test.describe('Dynamic ID Tests', () => {
     test('Clicking on button without using its ID', async ({ page }) => {
         // Example of using a dynamic ID in a selector
         // This one should pass because the ID is dynamic and we are not using it directly
-       await page.click('.btn.btn-primary'); // Using class selector as an example
+       await page.click('.btn.btn-primary'); 
     });
 
     test('Clicking on button using its ID', async ({ page }) => {
