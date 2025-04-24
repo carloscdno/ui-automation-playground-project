@@ -15,7 +15,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ui-tests:chrome": "playwright test --config=playwright.config.ts --project=Chromium",
+    "ui-tests:firefox": "playwright test --config=playwright.config.ts --project=Firefox",
+    "ui-tests:webkit": "playwright test --config=playwright.config.ts --project=Webkit"
   },
   "dependencies": {
     "@playwright/test": "^1.52.0"
