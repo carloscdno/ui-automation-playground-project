@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe.only('Load Delay Test', () => {
+test.describe('Load Delay Test', () => {
     test('Clicking the button after a delay', async ({ page }) => {
         // Go to home page
         await page.goto('http://uitestingplayground.com');
