@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe.only('Client-side delay', () => {
+test.describe('Client-side delay', () => {
   test('Clicking on the button and waiting for the loaded label', async ({ page }) => {
         await page.goto('http://uitestingplayground.com');
         const urlLink = page.locator('[href="/clientdelay"]');
