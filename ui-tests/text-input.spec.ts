@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-test.describe.only('Text Input', () => {
+test.describe('Text Input', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://uitestingplayground.com');
         const urlLink = page.locator('[href="/textinput"]');
