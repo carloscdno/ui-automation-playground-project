@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe.only('Sample App', () => {
+test.describe('Sample App', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://uitestingplayground.com');
         const urlLink = page.locator('[href="/sampleapp"]');
@@ -39,6 +39,7 @@ test.describe.only('Sample App', () => {
   
         // Validate logout confirmation message
         const logoutMessage = page.locator('#loginstatus');
+        await page.waitForSelector('#loginstatus', { state: 'visible', timeout: 5000 });
         await expect(logoutMessage).toHaveText(/User logged out/);
     });
 
