@@ -74,6 +74,10 @@ npx playwright test ui-tests/alerts.spec.ts
 ```bash
 npx playwright show-report
 ```
+- Run UI mode
+```bash
+npx playwright test --ui
+```
 ---
 ### 📸 Screenshots and Debugging
 
