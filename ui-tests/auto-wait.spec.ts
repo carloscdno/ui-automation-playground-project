@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-test.describe.only('Auto Wait for UI elements', () => {
+test.describe('Auto Wait for UI elements', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('http://uitestingplayground.com');
         const urlLink = page.locator('[href="/autowait"]');
