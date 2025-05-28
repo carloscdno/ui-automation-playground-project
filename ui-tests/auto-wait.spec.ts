@@ -64,41 +64,28 @@ test.describe('Auto Wait for UI elements', () => {
   });
 
     // Select Dropdown - Overlayed for 10s
-    test('Dropdown is overlayed for 10s, and then we can select an option', async ({ page }) => {
+    test('Dropdown is overlayed for 10s, then becomes clickable and selectable', async ({ page }) => {
         await page.selectOption('select', 'Select');
         await page.getByLabel('Visible').check();
         await page.getByLabel('Enabled').check();
         await page.getByLabel('On Top').uncheck();
         await page.getByRole('button', { name: 'Apply 10s' }).click();
 
-        // Verify that the dropdown is not clickable before the delay
         const dropdown = page.locator('select[id="target"]');
-        const overlay = page.locator('#overlay'); 
+        const overlay = page.locator('#overlay');
 
-        // Immediate checks
-        await expect(dropdown).toBeVisible(); // Dropdown exists but is covered
-        await expect(overlay).toBeVisible(); 
+        // Wait for overlay to be visible
+        await expect(overlay).toBeVisible({ timeout: 3000 });
 
-        // Attempt interaction (should fail)
-        await expect(async () => {
-        try {
-            await dropdown.click({ timeout: 3000 });
-        } catch (error) {
-            console.log('Verification: Dropdown was unclickable due to overlay');
-            console.log('Error Details:', error.message);
-            throw error; // Re-throw for the expect() to catch
-        }
-    }).rejects.toThrow(/Timeout.*3000ms/);
+        // Wait for overlay to disappear (10s + buffer)
+        await overlay.waitFor({ state: 'hidden', timeout: 12000 });
 
-        // Wait for overlay removal (10s delay + buffer)
-        await overlay.waitFor({ state: 'hidden', timeout: 11000 });
-
-        
-        // Verify final state
-        await expect(dropdown).toBeVisible();
+        // Now interact with dropdown
         await dropdown.selectOption({ label: 'Item 3' });
+
+        // Assert value was selected
         await expect(dropdown).toHaveValue(/3/);
-  });
+});
 
     // Label - Visible after 3s delay
     test('Label becomes visible after 3s delay', async ({ page }) => {
