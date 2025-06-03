@@ -86,8 +86,3 @@ Use Playwright Inspector for step-by-step debugging:
 npx playwright test --debug
 ```
 
----
-### 🙌 Why This Project?
-
-This repository showcases real-world UI test automation strategies, focusing on readability, reliability, and good testing practices. It's a great starting point for beginners and a solid reference for experienced testers looking to automate edge-case UI behavior.
-
